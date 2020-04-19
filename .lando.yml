@@ -1,0 +1,4 @@
+name: help-landlords
+recipe: lamp
+config:
+  webroot: .
