@@ -5,20 +5,30 @@
 }
 
 header{
-  border-bottom: 2px solid grey;
+  border-bottom: 2px solid $review;
+  padding: 10px 0;
 }
 
 .header{
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height:60px;
+  flex-direction: column;
+
+  @include tablet{
+    flex-direction: row;
+  }
 }
 
 .header-logo{
   display: flex;
   flex-direction: row;
   position: relative;
+  margin-bottom: 15px;
+
+  @include tablet{
+    margin-bottom: 0;
+  }
 
   &:after{
     content: '';
@@ -42,8 +52,12 @@ header{
   display:flex;
   flex-direction: row;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: center;
   font-weight: bold;
+
+  @include tablet{
+    justify-content: flex-end;
+  }
 
   img{
     width:20px;
@@ -58,22 +72,43 @@ header{
 
 .banner{
   position: relative;
-  padding: 50px 0 190px 0;
+  padding: 0 0 20px 0;
+  margin: 50px 0;
+
+  @include tablet{
+    padding: 50px 0 190px 0;
+    margin: 0;
+  }
 }
 
 .banner-content{
   display: flex;
   justify-content: space-between;
+  flex-direction: column;
+
+  @include tablet{
+    flex-direction: row;
+  }
 
   img{
-    width: 40%;
+    width: 70%;
+    margin: 25px auto;
     max-width: 400px;
     border-bottom-left-radius: 50px;
+
+    @include tablet{
+      width: 40%;
+      margin: 0;
+    }
   }
 }
 
 .banner-left{
-  max-width: 50%;
+  max-width: 100%;
+
+  @include tablet{
+    max-width: 50%;
+  }
 
   p{
     margin: 40px 0;
@@ -120,12 +155,23 @@ header{
   display: flex;
   justify-content: space-between;
   margin: 25px 0 70px 0;
+  flex-direction: column;
+
+  @include tablet{
+    flex-direction: row;
+  }
 
   div{
-    width:30%;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    width: 100%;
+    margin-bottom: 25px;
+
+    @include tablet{
+      width:30%;
+      margin-bottom: 0;
+    }
 
     h3{
       text-align: center;
@@ -152,6 +198,12 @@ header{
   box-shadow: 0 0 10px #b5b5b5;
   position: relative;
   border-bottom-left-radius: 30px;
+
+  img{
+    width: 150px;
+    border-radius: 50%;
+    margin: 30px auto;
+  }
 }
 
 .orange-box{
@@ -197,11 +249,16 @@ header{
 
   input:not(.contact-form--submit),
   select{
-    width: 48%;
+    width: 100%;
     height: 45px;
     padding: 0 15px;
     box-sizing: border-box;
     color: $review;
+    margin-bottom: 20px;
+
+    @include tablet{
+      width: 48%;
+    }
   }
 
   textarea{
@@ -234,6 +291,11 @@ header{
   display: flex;
   justify-content: space-between;
   margin-bottom: 15px;
+  flex-direction: column;
+
+  @include tablet{
+    flex-direction: row;
+  }
 }
 
 .contact-property{
@@ -243,7 +305,9 @@ header{
     background: none;
 
     &:last-of-type{
-      margin-top:23px;
+      @include tablet{
+        margin-top:23px;
+      }
     }
   }
 }
@@ -260,4 +324,10 @@ header{
   &:hover{
     cursor: pointer;
   }
+}
+
+footer{
+  margin-top: 75px;
+  background: $review;
+  height:100px;
 }

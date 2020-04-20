@@ -8,7 +8,14 @@
     <title>Help Landlords</title>
     <link rel="stylesheet" href="styles/styles.css" />
     <script src="https://www.google.com/recaptcha/api.js?render=6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI"></script>
-    <script type="text/javascript" src="jquery-3.3.1.js"></script>
+    <script>
+        grecaptcha.ready(function() {
+            grecaptcha.execute('6LeIxAcTAAAAAJcZVRqyHh71UMIEGNQ_MXjiZKhI', {action: 'homepage'}).then(function(token) {
+            console.log(token);
+            });
+        });
+    </script>
+<!--    <script type="text/javascript" src="./js/reCaptcha.js"></script>-->
 </head>
 <body>
 
@@ -78,19 +85,19 @@
             <h3>Our Clients’ reviews</h3>
             <div class="reviews-card--container">
                 <div class="review-card">
-                    <img src="" alt="">
+                    <img src="./img/review1.jpg" alt="">
                     <p>HelpingLandlords have helped me a lot! They take care of everything and pay me a fixed long term rent every month without fail. I am delighted that I have saved time and money by working with them!</p>
                     <p class="review-name">Anthony, London</p>
                 </div>
 
                 <div class="review-card">
-                    <img src="" alt="">
+                    <img src="./img/review2.jpg" alt="">
                     <p>Since the Covid outbreak, I have had real challenges keeping all of my properties filled 100% of the time. Since working with HelpingLandlords, I have found a way of avoiding rent loss !</p>
                     <p class="review-name">Emma, London</p>
                 </div>
 
                 <div class="review-card">
-                    <img src="" alt="">
+                    <img src="./img/review3.jpg" alt="">
                     <p>HelpingLandlords saved me from repossession! They payed me a fixed long term rent every month that really helped me get my finances back!</p>
                     <p class="review-name">Emma, London</p>
                 </div>
@@ -120,7 +127,7 @@
                             <option value="house">House</option>
                         </select>
 
-                        <input placeholder="Property's post code*" type="text" name="postal code" id="lastName" maxlength="6" required>
+                        <input placeholder="Property's post code*" type="text" name="postal code" id="postCode" maxlength="6" required>
 
                         <select name="number of bedroom" id="numberBedrooms" required>
                             <option value="">Number of bedrooms*</option>
