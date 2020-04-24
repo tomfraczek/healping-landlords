@@ -21,6 +21,13 @@ h1, h2, h3, h4, h5, h6, p, ul {
     .container {
       width: 1140px; } }
 
+a {
+  text-decoration: none;
+  color: #79868f; }
+  a:hover {
+    color: black;
+    text-decoration: underline; }
+
 * {
   font-family: 'Lato', sans-serif; }
 
@@ -263,18 +270,22 @@ header {
 .review-name {
   color: #fa6f32 !important; }
 
-.contact {
-  margin-top: 70px; }
-
 .contact-content {
   -webkit-box-shadow: 0 0 10px #b5b5b5;
           box-shadow: 0 0 10px #b5b5b5;
   padding: 25px 40px;
   margin-top: 25px; }
+  .contact-content p {
+    font-size: 16px;
+    color: #79868f;
+    text-align: center; }
+
+.contact-phone {
+  color: #000; }
 
 .contact-form {
   max-width: 800px;
-  margin: auto; }
+  margin: 25px auto; }
   .contact-form input:not(.contact-form--submit),
   .contact-form select {
     width: 100%;
@@ -298,12 +309,6 @@ header {
     font-size: 14px;
     color: #79868f;
     margin-bottom: 25px; }
-    .contact-form p a {
-      text-decoration: none;
-      color: #79868f; }
-      .contact-form p a:hover {
-        color: black;
-        text-decoration: underline; }
 
 .contact-name,
 .contact-contact,
@@ -352,3 +357,12 @@ footer {
   margin-top: 75px;
   background: #79868f;
   height: 100px; }
+
+.faq {
+  margin: 40px 0; }
+
+.faq-accordion {
+  margin-top: 25px; }
+
+.hidden {
+  display: none; }

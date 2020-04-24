@@ -233,19 +233,25 @@ header{
   color: $detail!important;
 }
 
-.contact{
-  margin-top: 70px;
-}
-
 .contact-content{
   box-shadow: 0 0 10px #b5b5b5;
   padding: 25px 40px;
   margin-top: 25px;
+
+  p{
+    font-size: 16px;
+    color: $review;
+    text-align: center;
+  }
+}
+
+.contact-phone{
+  color: #000;
 }
 
 .contact-form{
   max-width: 800px;
-  margin: auto;
+  margin: 25px auto;
 
   input:not(.contact-form--submit),
   select{
@@ -272,16 +278,6 @@ header{
     font-size: 14px;
     color: $review;
     margin-bottom: 25px;
-
-    a{
-      text-decoration: none;
-      color: $review;
-
-      &:hover{
-        color: black;
-        text-decoration: underline;
-      }
-    }
   }
 }
 
@@ -330,4 +326,16 @@ footer{
   margin-top: 75px;
   background: $review;
   height:100px;
+}
+
+.faq{
+  margin: 40px 0;
+}
+
+.faq-accordion{
+  margin-top: 25px;
+}
+
+.hidden{
+  display: none;
 }

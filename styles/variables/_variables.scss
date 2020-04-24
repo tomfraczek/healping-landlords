@@ -11,3 +11,13 @@ $detail: #fa6f32;
 .container{
   @include container;
 }
+
+a{
+  text-decoration: none;
+  color: $review;
+
+  &:hover{
+    color: black;
+    text-decoration: underline;
+  }
+}
