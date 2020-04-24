@@ -2,11 +2,12 @@
 @import "./styles/variables/reset";
 
 //fonts
-@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:wght@700&family=Open+Sans:wght@400;700;800&display=swap');
 
 //colors
 $review: #79868f;
-$detail: #fa6f32;
+$detail: #ff6e00;
+$header: #0a2233;
 
 .container{
   @include container;

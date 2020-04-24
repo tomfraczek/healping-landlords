@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Lato&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=EB+Garamond:wght@700&family=Open+Sans:wght@400;700;800&display=swap");
 body {
   margin: 0; }
 
@@ -29,7 +29,10 @@ a {
     text-decoration: underline; }
 
 * {
-  font-family: 'Lato', sans-serif; }
+  font-family: 'Open Sans', sans-serif; }
+
+html {
+  scroll-behavior: smooth; }
 
 header {
   border-bottom: 2px solid #79868f;
@@ -73,7 +76,7 @@ header {
     content: '';
     width: 7px;
     height: 7px;
-    background: #fa6f32;
+    background: #ff6e00;
     margin-left: 10px;
     display: inline-block;
     border-radius: 50px;
@@ -81,7 +84,31 @@ header {
     right: -10px;
     bottom: 3px; }
   .header-logo h3 {
-    font-size: 24px; }
+    font-size: 36px;
+    font-weight: bold; }
+
+.header-nav {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-bottom: 17px; }
+  .header-nav a {
+    color: #0a2233;
+    font-size: 16px;
+    font-weight: 600;
+    margin-right: 25px; }
+    .header-nav a:last-of-type {
+      margin-right: 0; }
+
+.header-time {
+  width: inherit; }
 
 .whatsapp {
   display: -webkit-box;
@@ -97,7 +124,8 @@ header {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  font-weight: bold; }
+  font-weight: bold;
+  font-size: 22px; }
   @media (min-width: 768px) {
     .whatsapp {
       -webkit-box-pack: end;
@@ -139,12 +167,12 @@ header {
               flex-direction: row; } }
   .banner-content img {
     width: 70%;
-    margin: 25px auto;
-    max-width: 400px;
+    margin: 70px auto 25px;
+    max-width: 520px;
     border-bottom-left-radius: 50px; }
     @media (min-width: 768px) {
       .banner-content img {
-        width: 40%;
+        width: 50%;
         margin: 0; } }
 
 .banner-left {
@@ -154,21 +182,24 @@ header {
       max-width: 50%; } }
   .banner-left p {
     margin: 40px 0;
-    color: #79868f; }
+    color: #79868f;
+    font-size: 16px; }
   .banner-left a {
-    padding: 7px 45px;
-    background: #fa6f32;
-    border-bottom-left-radius: 15px;
+    padding: 17px 70px;
+    background: #ff6e00;
+    border-bottom-left-radius: 30px;
     color: #fff;
     text-decoration: none;
     font-weight: bold; }
 
 .banner-title--small {
   margin-bottom: 20px;
-  font-size: 23px; }
+  font-size: 36px; }
 
 .banner-title--big {
-  font-size: 32px; }
+  font-size: 60px;
+  font-family: 'EB Garamond', serif;
+  color: #0a2233; }
 
 .banner-bcg--img {
   z-index: -2;
@@ -252,7 +283,7 @@ header {
 .orange-box {
   width: 40px;
   height: 40px;
-  background: #fa6f32;
+  background: #ff6e00;
   border-bottom-left-radius: 15px;
   position: absolute;
   top: -20px;
@@ -268,13 +299,13 @@ header {
   background: #fff; }
 
 .review-name {
-  color: #fa6f32 !important; }
+  color: #ff6e00 !important; }
 
 .contact-content {
   -webkit-box-shadow: 0 0 10px #b5b5b5;
           box-shadow: 0 0 10px #b5b5b5;
   padding: 25px 40px;
-  margin-top: 25px; }
+  margin-top: 50px; }
   .contact-content p {
     font-size: 16px;
     color: #79868f;
@@ -343,13 +374,15 @@ header {
         margin-top: 23px; } }
 
 .contact-form--submit {
-  padding: 7px 45px;
-  background: #fa6f32;
+  padding: 17px 45px;
+  background: #ff6e00;
   border-bottom-left-radius: 15px;
   color: #fff;
   text-decoration: none;
   font-weight: bold;
-  border: none; }
+  border: none;
+  font-size: 20px;
+  width: 100%; }
   .contact-form--submit:hover {
     cursor: pointer; }
 
@@ -359,10 +392,18 @@ footer {
   height: 100px; }
 
 .faq {
-  margin: 40px 0; }
+  margin: 70px 0; }
 
 .faq-accordion {
   margin-top: 25px; }
 
 .hidden {
   display: none; }
+
+.confirm-message--sent {
+  text-align: center; }
+
+.section-header {
+  font-size: 47px;
+  font-family: 'EB Garamond', serif;
+  color: #0a2233; }

@@ -1,76 +1,9 @@
 <?php
-///**
-// * PHPMailer simple contact form example.
-// * If you want to accept and send uploads in your form, look at the send_file_upload example.
-// */
-//
-////Import the PHPMailer class into the global namespace
-//use PHPMailer\PHPMailer\PHPMailer;
-//if (array_key_exists('to', $_POST)) {
-//    $err = false;
-//    $msg = '';
-//    $email = '';
-//    //Apply some basic validation and filtering to the subject
-//    if (array_key_exists('subject', $_POST)) {
-//        $subject = substr(strip_tags($_POST['subject']), 0, 255);
-//    } else {
-//        $subject = 'No subject given';
-//    }
-//    //Apply some basic validation and filtering to the query
-//    if (array_key_exists('query', $_POST)) {
-//        //Limit length and strip HTML tags
-//        $query = substr(strip_tags($_POST['query']), 0, 16384);
-//    } else {
-//        $query = '';
-//        $msg = 'No query provided!';
-//        $err = true;
-//    }
-//    //Apply some basic validation and filtering to the name
-//        //Limit length and strip HTML tags
-//        $firstName = substr(strip_tags($_POST['firstname']), 0, 255);
-//        $lastName = substr(strip_tags($_POST['firstname']), 0, 255);
-//    //Validate to address
-//    //Never allow arbitrary input for the 'to' address as it will turn your form into a spam gateway!
-//    //Substitute appropriate addresses from your own domain, or simply use a single, fixed address
-////    if (array_key_exists('to', $_POST) && in_array($_POST['to'], ['sales', 'support', 'accounts'], true)) {
-////        $to = $_POST['to'] . '@example.com';
-////    } else {
-////        $to = 'tomaszfr90@gmail.com';
-////    }
-//    $to = 'tomaszfr90@gmail.com';
-//    //Make sure the address they provided is valid before trying to use it
-//    if (array_key_exists('email', $_POST) && PHPMailer::validateAddress($_POST['email'])) {
-//        $email = $_POST['email'];
-//    } else {
-//        $msg .= 'Error: invalid email address provided';
-//        $err = true;
-//    }
-//    if (!$err) {
-//        $mail = new PHPMailer;
-//        //        $mail->isSMTP();
-//        $mail->Host = 'localhost';
-//        $mail->Port = 25;
-//        $mail->CharSet = PHPMailer::CHARSET_UTF8;
-//        //It's important not to use the submitter's address as the from address as it's forgery,
-//        //which will cause your messages to fail SPF checks.
-//        //Use an address in your own domain as the from address, put the submitter's address in a reply-to
-//        $mail->setFrom('contact@example.com', (empty($name) ? 'Contact form' : $name));
-//        $mail->addAddress($to);
-//        $mail->addReplyTo($email, $name);
-//        $mail->Subject = 'Contact form: ' . $subject;
-//        $mail->Body = "Contact form submission\n\n" . $query;
-//        if (!$mail->send()) {
-//            $msg .= 'Mailer Error: '. $mail->ErrorInfo;
-//        } else {
-//            header('Location: script.php#bottomOfPage');
-//            $msg .= 'Message sent!';
-//        }
-//    }
-//}
 use PHPMailer\PHPMailer\PHPMailer;
 require 'vendor/autoload.php';
 
-if ($_SERVER["REQUEST_METHOD"] == "POST"){
+
+function sendEmail(){
     $mail = new PHPMailer;
     $firstName = $_POST['firstname'];
     $lastName = $_POST['lastname'];
@@ -81,27 +14,66 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
     $bedrooms = $_POST['number_of_bedrooms'];
     $message = $_POST['query'];
 
-    $mail->setFrom($email, $firstName . ' ' . $lastName);
+    $mail->setFrom('helpinglandlords@helpinglandlords.com');
+    $mail->addReplyTo($_POST[$email]);
     $mail->addAddress('tomaszfr90@gmail.com');
-    $mail->Subject  = 'Website request';
-    $mail->Body     = '<h1>Contact request from helpinglandlords.co.uk</h1><br>
-    <h3>Requester:</h3><br>
-    <p>Name: ' . $firstName . ' ' . $lastName .'</p><br>
-    <p>Email: ' . $email .'</p><br>
-    <p>Phone number: ' . $phoneNumber .'</p><br>
-    <p>Property type: '. $propertyType .'</p><br>
-    <p>Postal code: '. $postalCode .'</p><br>
-    <p>Bedroom: '. $bedrooms .'</p><br>
-    <p>Message:</p><br>
+    $mail->Subject  = 'Contact request';
+    $mail->Body     = '<h1>Contact request from helpinglandlords.co.uk</h1>
+    <h3>Requester:</h3>
+    <p>Name: ' . $firstName . ' ' . $lastName .'</p>
+    <p>Email: ' . $email .'</p>
+    <p>Phone number: ' . $phoneNumber .'</p>
+    <h3>Property:</h3>
+    <p>Property type: '. $propertyType .'</p>
+    <p>Postal code: '. $postalCode .'</p>
+    <p>Bedroom: '. $bedrooms .'</p>
+    <h3>Message:</h3>
     <p>'. $message .'</p>';
     $mail->IsHTML(true);
     if(!$mail->send()) {
         echo 'Message was not sent.';
         echo 'Mailer error: ' . $mail->ErrorInfo;
     } else {
-        echo 'Message has been sent.';
+        $msg = '<p class="confirm-message--sent">Message has been sent. We will contact you within 24 hours.</p>';
     }
 }
+
+if ($_SERVER["REQUEST_METHOD"] == "POST"){
+
+    if (isset($_POST['g-recaptcha-response'])) {
+        $captcha = $_POST['g-recaptcha-response'];
+    } else {
+        $captcha = false;
+    }
+
+    if (!$captcha) {
+        //Do something with error
+    } else {
+        $secret   = '6LdmK-0UAAAAAAD2DgSKDX4BGi6gPyFSfTD6NTiu';
+        $response = file_get_contents(
+            "https://www.google.com/recaptcha/api/siteverify?secret=" . $secret . "&response=" . $captcha . "&remoteip=" . $_SERVER['REMOTE_ADDR']
+        );
+        // use json_decode to extract json response
+        $response = json_decode($response);
+
+        if ($response->success === false) {
+            //Do something with error
+        }
+    }
+
+//... The Captcha is valid you can continue with the rest of your code
+//... Add code to filter access using $response . score
+    if ($response->success==true && $response->score <= 0.5) {
+        exit();
+    } else {
+        sendEmail();
+    }
+
+
+}
+
+
+
 ?>
 
 <!doctype html>
@@ -118,10 +90,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
     <script type="text/javascript" src="./uikit/uikit.min.js"></script>
 
     <script>
-        // grecaptcha.ready(function() {
-        //     grecaptcha.execute('6LdmK-0UAAAAACfWJO_x8Hx3ZHNsH5o56TovMSPg', {action: 'homepage'}).then(function(token) {
-        //     console.log('updated');
-        //     document.querySelector('#captchaToken').dataset.captcha = token;
 
                 grecaptcha.ready(function() {
                     // do request for recaptcha token
@@ -143,9 +111,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
             <div class="header-logo">
                 <h3>HelpingLandlords</h3>
             </div>
-
+            <div class="header-nav">
+                <a href="#reviews">REVIEWS</a>
+                <a href="#faq">FAQ</a>
+                <a href="#contact">CONTACT</a>
+            </div>
             <div class="header-time">
-                <p class="opening-hours">Monday - Friday : 9:00 am - 5:30 pm</p>
+<!--                <p class="opening-hours">Monday - Friday : 9:00 am - 5:30 pm</p>-->
                 <p class="whatsapp"><img src="./img/whatsapp.svg" alt="whatsapp">+44 (0) 776 3380 426</p>
             </div>
         </div>
@@ -173,7 +145,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
     <section class="why-us">
         <div class="container">
             <div>
-                <h3>Why Choose Us ?</h3>
+                <h3 class="section-header">— Why Choose Us ?</h3>
             </div>
 
             <div class="why-card--container">
@@ -199,9 +171,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
         </div>
     </section>
 
-    <section class="reviews">
+    <section id="reviews" class="reviews">
         <div class="container">
-            <h3>Our Clients’ reviews</h3>
+            <h3 class="section-header">— Our Client Reviews</h3>
             <div class="reviews-card--container">
                 <div class="review-card">
                     <img src="./img/review1.jpg" alt="">
@@ -212,13 +184,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
                 <div class="review-card">
                     <img src="./img/review2.jpg" alt="">
                     <p>Since the Covid outbreak, I have had real challenges keeping all of my properties filled 100% of the time. Since working with HelpingLandlords, I have found a way of avoiding rent loss !</p>
-                    <p class="review-name">Emma, London</p>
+                    <p class="review-name">Azad, London</p>
                 </div>
 
                 <div class="review-card">
                     <img src="./img/review3.jpg" alt="">
                     <p>HelpingLandlords saved me from repossession! They payed me a fixed long term rent every month that really helped me get my finances back!</p>
-                    <p class="review-name">Emma, London</p>
+                    <p class="review-name">Matt, London</p>
                 </div>
             </div>
         </div>
@@ -226,9 +198,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 
     <section class="faq" id="faq">
         <div class="container">
-            <h3>FAQ</h3>
-
-
+            <h3 class="section-header">— FAQ</h3>
             <ul class="faq-accordion" uk-accordion="multiple: true">
                 <li>
                     <a class="uk-accordion-title" href="#">Which area do you cover in the UK?</a>
@@ -267,7 +237,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 
     <section class="contact" id="contact">
         <div class="container">
-            <h3>Contact Us Today !</h3>
+            <h3 class="section-header">—Contact Us Today !</h3>
             <div class="contact-content">
 
                <p>Send us a message</p>

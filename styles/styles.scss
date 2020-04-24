@@ -1,7 +1,11 @@
 @import "./styles/variables/variables";
 
 *{
-  font-family: 'Lato', sans-serif;
+  font-family: 'Open Sans', sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 header{
@@ -44,8 +48,32 @@ header{
   }
 
   h3{
-    font-size: 24px;
+    font-size: 36px;
+    font-weight: bold;
   }
+}
+
+.header-nav{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 17px;
+
+  a{
+    color: $header;
+    font-size: 16px;
+    font-weight: 600;
+    margin-right: 25px;
+
+    &:last-of-type{
+      margin-right: 0;
+    }
+  }
+}
+
+.header-time{
+  width: inherit;
 }
 
 .whatsapp{
@@ -54,6 +82,7 @@ header{
   align-items: center;
   justify-content: center;
   font-weight: bold;
+  font-size: 22px;
 
   @include tablet{
     justify-content: flex-end;
@@ -92,12 +121,12 @@ header{
 
   img{
     width: 70%;
-    margin: 25px auto;
-    max-width: 400px;
+    margin: 70px auto 25px;
+    max-width: 520px;
     border-bottom-left-radius: 50px;
 
     @include tablet{
-      width: 40%;
+      width: 50%;
       margin: 0;
     }
   }
@@ -113,12 +142,13 @@ header{
   p{
     margin: 40px 0;
     color: $review;
+    font-size: 16px;
   }
 
   a{
-    padding: 7px 45px;
+    padding: 17px 70px;
     background: $detail;
-    border-bottom-left-radius: 15px;
+    border-bottom-left-radius: 30px;
     color: #fff;
     text-decoration: none;
     font-weight: bold;
@@ -127,11 +157,13 @@ header{
 
 .banner-title--small{
   margin-bottom: 20px;
-  font-size: 23px;
+  font-size: 36px;
 }
 
 .banner-title--big{
-  font-size: 32px;
+  font-size: 60px;
+  font-family: 'EB Garamond', serif;
+  color: $header;
 }
 
 .banner-bcg--img{
@@ -236,7 +268,7 @@ header{
 .contact-content{
   box-shadow: 0 0 10px #b5b5b5;
   padding: 25px 40px;
-  margin-top: 25px;
+  margin-top: 50px;
 
   p{
     font-size: 16px;
@@ -309,13 +341,15 @@ header{
 }
 
 .contact-form--submit{
-  padding: 7px 45px;
+  padding: 17px 45px;
   background: $detail;
   border-bottom-left-radius: 15px;
   color: #fff;
   text-decoration: none;
   font-weight: bold;
   border: none;
+  font-size: 20px;
+  width: 100%;
 
   &:hover{
     cursor: pointer;
@@ -329,7 +363,7 @@ footer{
 }
 
 .faq{
-  margin: 40px 0;
+  margin: 70px 0;
 }
 
 .faq-accordion{
@@ -338,4 +372,15 @@ footer{
 
 .hidden{
   display: none;
+}
+
+.confirm-message--sent{
+  text-align: center;
+
+}
+
+.section-header{
+  font-size: 47px;
+  font-family: 'EB Garamond', serif;
+  color:$header;
 }
