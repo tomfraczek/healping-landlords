@@ -14,11 +14,11 @@ function sendEmail(){
     $bedrooms = $_POST['number_of_bedrooms'];
     $message = $_POST['query'];
 
-    $mail->setFrom('helpinglandlords@helpinglandlords.com');
+    $mail->setFrom('rentsecured@rentsecured.co.uk');
     $mail->addReplyTo($_POST[$email]);
-    $mail->addAddress('tomaszfr90@gmail.com');
+    $mail->addAddress('info@rentsecured.co.uk');
     $mail->Subject  = 'Contact request';
-    $mail->Body     = '<h1>Contact request from helpinglandlords.co.uk</h1>
+    $mail->Body     = '<h1>Contact request from rentsecured.co.uk</h1>
     <h3>Requester:</h3>
     <p>Name: ' . $firstName . ' ' . $lastName .'</p>
     <p>Email: ' . $email .'</p>
@@ -32,9 +32,11 @@ function sendEmail(){
     $mail->IsHTML(true);
     if(!$mail->send()) {
         echo 'Message was not sent.';
-        echo 'Mailer error: ' . $mail->ErrorInfo;
+//        echo 'Mailer error: ' . $mail->ErrorInfo;
     } else {
-        $msg = '<p class="confirm-message--sent">Message has been sent. We will contact you within 24 hours.</p>';
+        header("location: thank-you.php");
+        exit();
+//        $msg = '<p class="confirm-message--sent">Message has been sent. We will contact you within 24 hours.</p>';
     }
 }
 
@@ -72,8 +74,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 
 }
 
-
-
 ?>
 
 <!doctype html>
@@ -83,7 +83,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Help Landlords</title>
+    <title>Rent Secured</title>
     <link rel="stylesheet" href="./uikit/uikit.min.css" />
     <link rel="stylesheet" href="styles/styles.css" />
     <script src="https://www.google.com/recaptcha/api.js?render=6LdmK-0UAAAAACfWJO_x8Hx3ZHNsH5o56TovMSPg"></script>
@@ -104,12 +104,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
     </script>
 </head>
 <body>
-<h1><?php if (!empty($msg)){echo $msg;} ?></h1>
 <div class="hidden" id="captchaToken"></div>
     <header>
         <div class="container header">
             <div class="header-logo">
-                <h3>HelpingLandlords</h3>
+                <h3>RentSecured</h3>
             </div>
             <div class="header-nav">
                 <a href="#reviews">REVIEWS</a>
@@ -117,7 +116,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
                 <a href="#contact">CONTACT</a>
             </div>
             <div class="header-time">
-<!--                <p class="opening-hours">Monday - Friday : 9:00 am - 5:30 pm</p>-->
+                <p class="opening-hours">Monday - Friday : 9:00 am - 5:30 pm</p>
                 <p class="whatsapp"><img src="./img/whatsapp.svg" alt="whatsapp">+44 (0) 776 3380 426</p>
             </div>
         </div>
@@ -127,7 +126,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
         <div class="container banner-content">
             <div class="banner-left">
                 <h3 class="banner-title--small">Covid-19 Update</h3>
-                <h3 class="banner-title--big">Rent Guaranteed For <br>
+                <h3 class="banner-title--big">Rent Guaranteed For
                     Landlords in London</h3>
                 <p>We guaranty your rent even in time of crisis. No Voids, no risk. Your rent is paid into your bank every month !</p>
                 <a href="#contact">Contact Us Today</a>
@@ -145,19 +144,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
     <section class="why-us">
         <div class="container">
             <div>
-                <h3 class="section-header">— Why Choose Us ?</h3>
+                <h3 class="section-header">— Why Choose Us?</h3>
             </div>
 
             <div class="why-card--container">
                 <div class="why-card">
                     <span class="orange-box"></span>
                     <h3>Free of charge</h3>
-                    <p>At HelpingLandlords, there are no fees or bolt on hidden charges – EVER!</p>
+                    <p>At RentSecured, there are no fees or bolt on hidden charges – EVER!</p>
                 </div>
 
                 <div class="why-card">
                     <span class="orange-box"></span>
-                    <h3>We find the tenants</h3>
+                    <h3>We find you tenants<br>in 1 week</h3>
                     <p>We take care of finding residents for your property. We handle all of the viewings.</p>
                 </div>
 
@@ -177,19 +176,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
             <div class="reviews-card--container">
                 <div class="review-card">
                     <img src="./img/review1.jpg" alt="">
-                    <p>HelpingLandlords have helped me a lot! They take care of everything and pay me a fixed long term rent every month without fail. I am delighted that I have saved time and money by working with them!</p>
+                    <p>RentSecured have helped me a lot! They take care of everything and pay me a fixed long term rent every month without fail. I am delighted that I have saved time and money by working with them!</p>
                     <p class="review-name">Anthony, London</p>
                 </div>
 
                 <div class="review-card">
                     <img src="./img/review2.jpg" alt="">
-                    <p>Since the Covid outbreak, I have had real challenges keeping all of my properties filled 100% of the time. Since working with HelpingLandlords, I have found a way of avoiding rent loss !</p>
+                    <p>Since the Covid outbreak, I have had real challenges keeping all of my properties filled 100% of the time. Since working with RentSecured, I have found a way of avoiding rent loss !</p>
                     <p class="review-name">Azad, London</p>
                 </div>
 
                 <div class="review-card">
                     <img src="./img/review3.jpg" alt="">
-                    <p>HelpingLandlords saved me from repossession! They payed me a fixed long term rent every month that really helped me get my finances back!</p>
+                    <p>RentSecured saved me from repossession! They payed me a fixed long term rent every month that really helped me get my finances back!</p>
                     <p class="review-name">Matt, London</p>
                 </div>
             </div>
@@ -224,12 +223,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
                         <p>There are NO FEES! We do not charge you any monthly commissions and there are no hidden charges. Our main income comes from our clients who pay us to find quality accommodation for their workers. </p>
                     </div>
                 </li>
-                <li>
-                    <a class="uk-accordion-title" href="#">What if a client doesn’t pay you, will I still get my rent? </a>
-                    <div class="uk-accordion-content">
-                        <p>The answer is yes. We guarantee your rent every month regardless of our clients’ financial situation. </p>
-                    </div>
-                </li>
             </ul>
 
         </div>
@@ -237,7 +230,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 
     <section class="contact" id="contact">
         <div class="container">
-            <h3 class="section-header">—Contact Us Today !</h3>
+            <h3 class="section-header">—Contact Us Today!</h3>
             <div class="contact-content">
 
                <p>Send us a message</p>
@@ -277,7 +270,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
                         </select>
                     </div>
                     <textarea cols="30" class="contact-form--input-mesage" rows="8" name="query" id="query" placeholder="Message*" required></textarea>
-                    <p>* By clicking Send message, you agree to our <a href="">Terms &amp; Conditions</a> and that you have read our <a href="">Data Use Policy</a>, including our <a href="">Cookie Use</a>.</p>
+                    <div class="rights-container">
+                        <input type="checkbox" class="rights-input" id="rights" name="rights" required>
+                        <p>I agree to the <a href="">Terms &amp; Conditions</a> and that I have read the <a href="">Data Use Policy</a>, including our <a href="">Cookie Use</a>.*</p>
+                    </div>
+
                     <input class="contact-form--submit" type="submit" name="submit" value="SEND MESSAGE">
                 </form>
             </div>
