@@ -9,7 +9,6 @@ function sendEmail(){
     $lastName = $_POST['lastname'];
     $email = $_POST['email'];
     $phoneNumber = $_POST['phone_number'];
-    $propertyType = $_POST['property_type'];
     $postalCode = $_POST['postal_code'];
     $bedrooms = $_POST['number_of_bedrooms'];
     $message = $_POST['query'];
@@ -24,7 +23,6 @@ function sendEmail(){
     <p>Email: ' . $email .'</p>
     <p>Phone number: ' . $phoneNumber .'</p>
     <h3>Property:</h3>
-    <p>Property type: '. $propertyType .'</p>
     <p>Postal code: '. $postalCode .'</p>
     <p>Bedroom: '. $bedrooms .'</p>
     <h3>Message:</h3>
@@ -174,32 +172,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
             <div class="why-card--container">
                 <div class="why-card">
                     <span class="orange-box"></span>
-                    <div class="card-header">
-                        <h3>Free of charge</h3>
-                    </div>
-                    <div class="card-content">
-                        <p>At RentSecured, there are no fees or bolt on hidden charges – EVER!</p>
-                    </div>
+                    <h3>Free of charge</h3>
+                    <p style="margin-top: 25px;">At RentSecured, there are no fees or bolt on hidden charges – EVER!</p>
                 </div>
 
                 <div class="why-card">
                     <span class="orange-box"></span>
-                    <div class="card-header">
-                        <h3>We find you tenants<br>in 1 week</h3>
-                    </div>
-                    <div class="card-content">
-                        <p>We take care of finding residents for your property. We handle all of the viewings.</p>
-                    </div>
+                    <h3>We find you tenants<br>in 1 week</h3>
+                    <p>We take care of finding residents for your property. We handle all of the viewings.</p>
                 </div>
 
                 <div class="why-card">
                     <span class="orange-box"></span>
-                    <div class="card-header">
-                        <h3>We Guarantee Rent</h3>
-                    </div>
-                    <div class="card-content">
-                        <p>We keep things simple for you. Your rent is paid into your bank every month.</p>
-                    </div>
+                    <h3 style="margin-top: 55px;">We Guarantee Rent</h3>
+                    <p>We keep things simple for you. Your rent is paid into your bank every month.</p>
                 </div>
 
             </div>
@@ -286,13 +272,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
                     </div>
 
                     <div class="contact-property">
-                        <select name="property_type" id="propertyType" required>
-                            <option value="">Property type*</option>
-                            <option value="apartment">Apartment</option>
-                            <option value="house">House</option>
-                        </select>
 
-                        <input placeholder="Property's post code*" type="text" name="postal_code" id="postCode" maxlength="6" required>
+                        <input placeholder="Property's post code (e.g. E1 6AN) *" type="text" name="postal_code" id="postCode" maxlength="8" required>
 
                         <select name="number_of_bedrooms" id="numberBedrooms" required>
                             <option value="">Number of bedrooms*</option>
