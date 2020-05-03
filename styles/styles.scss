@@ -235,12 +235,13 @@ header{
     flex-direction: row;
   }
 
-  div{
+  div:not(.card-content):not(.card-header){
+    padding-bottom: 55px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     width: 100%;
-    margin-bottom: 25px;
+    //margin-bottom: 25px;
 
     @include tablet{
       width:30%;
@@ -250,12 +251,14 @@ header{
     h3{
       text-align: center;
       margin: 40px 0 20px;
+      font-family: 'EB Garamond';
+      font-size: 29px;
     }
 
     p{
       text-align: center;
       width: 80%;
-      margin: auto auto 55px;
+      //margin: auto auto 55px;
     }
   }
 }
@@ -357,7 +360,6 @@ header{
 
 .rights-container{
   display: flex;
-
 }
 
 .contact-name,
@@ -468,3 +470,18 @@ footer{
   bottom: 0;
   width: 100%;
  }
+
+.privacy-terms{
+  margin-top: 50px;
+
+  p{
+    margin: 20px 0!important;
+  }
+}
+
+.card-content{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

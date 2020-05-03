@@ -284,8 +284,9 @@ header {
       -webkit-box-direction: normal;
           -ms-flex-direction: row;
               flex-direction: row; } }
-  .why-card--container div,
-  .reviews-card--container div {
+  .why-card--container div:not(.card-content):not(.card-header),
+  .reviews-card--container div:not(.card-content):not(.card-header) {
+    padding-bottom: 55px;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -296,22 +297,22 @@ header {
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
-    width: 100%;
-    margin-bottom: 25px; }
+    width: 100%; }
     @media (min-width: 768px) {
-      .why-card--container div,
-      .reviews-card--container div {
+      .why-card--container div:not(.card-content):not(.card-header),
+      .reviews-card--container div:not(.card-content):not(.card-header) {
         width: 30%;
         margin-bottom: 0; } }
-    .why-card--container div h3,
-    .reviews-card--container div h3 {
+    .why-card--container div:not(.card-content):not(.card-header) h3,
+    .reviews-card--container div:not(.card-content):not(.card-header) h3 {
       text-align: center;
-      margin: 40px 0 20px; }
-    .why-card--container div p,
-    .reviews-card--container div p {
+      margin: 40px 0 20px;
+      font-family: 'EB Garamond';
+      font-size: 29px; }
+    .why-card--container div:not(.card-content):not(.card-header) p,
+    .reviews-card--container div:not(.card-content):not(.card-header) p {
       text-align: center;
-      width: 80%;
-      margin: auto auto 55px; }
+      width: 80%; }
 
 .why-card--container p {
   color: #79868f; }
@@ -486,3 +487,20 @@ footer {
   position: absolute;
   bottom: 0;
   width: 100%; }
+
+.privacy-terms {
+  margin-top: 50px; }
+  .privacy-terms p {
+    margin: 20px 0 !important; }
+
+.card-content {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center; }

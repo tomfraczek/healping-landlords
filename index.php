@@ -174,20 +174,32 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
             <div class="why-card--container">
                 <div class="why-card">
                     <span class="orange-box"></span>
-                    <h3>Free of charge</h3>
-                    <p>At RentSecured, there are no fees or bolt on hidden charges – EVER!</p>
+                    <div class="card-header">
+                        <h3>Free of charge</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>At RentSecured, there are no fees or bolt on hidden charges – EVER!</p>
+                    </div>
                 </div>
 
                 <div class="why-card">
                     <span class="orange-box"></span>
-                    <h3>We find you tenants<br>in 1 week</h3>
-                    <p>We take care of finding residents for your property. We handle all of the viewings.</p>
+                    <div class="card-header">
+                        <h3>We find you tenants<br>in 1 week</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>We take care of finding residents for your property. We handle all of the viewings.</p>
+                    </div>
                 </div>
 
                 <div class="why-card">
                     <span class="orange-box"></span>
-                    <h3>We Guarantee Rent</h3>
-                    <p>We keep things simple for you. Your rent is paid into your bank every month.</p>
+                    <div class="card-header">
+                        <h3>We Guarantee Rent</h3>
+                    </div>
+                    <div class="card-content">
+                        <p>We keep things simple for you. Your rent is paid into your bank every month.</p>
+                    </div>
                 </div>
 
             </div>
@@ -296,7 +308,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
                     <textarea cols="30" class="contact-form--input-mesage" rows="8" name="query" id="query" placeholder="Message*" required></textarea>
                     <div class="rights-container">
                         <input type="checkbox" class="rights-input" id="rights" name="rights" required>
-                        <p>I agree to the <a href="">Terms &amp; Conditions</a> and that I have read the <a href="">Data Use Policy</a>, including our <a href="">Cookie Use</a>.*</p>
+                        <p>I agree to the <a href="./terms.html">Terms &amp; Conditions</a> and that I have read the <a href="./privacy.html">Privacy Policy</a>*</p>
                     </div>
 
                     <input class="contact-form--submit" type="submit" name="submit" value="SEND MESSAGE">
