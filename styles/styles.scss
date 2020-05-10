@@ -1,8 +1,10 @@
 @import "./styles/variables/variables";
+@import "./styles/variables/breakpoints";
 
 *{
   font-family: 'Open Sans', sans-serif;
 }
+
 
 html {
   scroll-behavior: smooth;
@@ -19,7 +21,7 @@ header{
 
 .header{
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
   flex-direction: column;
 
@@ -55,7 +57,19 @@ header{
   h3{
     font-size: 36px;
     font-weight: bold;
+
+    a{
+      color: #000;
+
+      &:hover{
+        text-decoration: none;
+      }
+    }
   }
+}
+
+.contact{
+  color: $detail!important;
 }
 
 .header-nav{
@@ -172,7 +186,7 @@ header{
 
   p{
     margin: 40px 0;
-    color: $review;
+    color: #fff;
     font-size: 16px;
   }
 
@@ -189,13 +203,14 @@ header{
 .banner-title--small{
   margin-bottom: 20px;
   font-size: 36px;
+  color: #fff;
 }
 
 .banner-title--big{
   font-size: 45px;
   line-height: 54px;
   font-family: 'EB Garamond', serif;
-  color: $header;
+  color: #fff;
 
   @include tablet{
     font-size: 60px;
@@ -206,7 +221,7 @@ header{
 .banner-bcg--img{
   z-index: -2;
   position: absolute;
-  bottom: -130px;
+  top: -200px;
   width: 100%;
 
   @include desktop{
@@ -216,7 +231,7 @@ header{
 }
 
 .img-bcg{
-  background: #ffffffdb;
+  background: #00000040;
   height: 100%;
   z-index: -1;
   position: absolute;
@@ -230,15 +245,16 @@ header{
   justify-content: space-between;
   margin: 25px 0 70px 0;
   flex-direction: column;
+  flex-wrap: wrap;
 
   @include tablet{
     flex-direction: row;
   }
 
-  div{
+  .review-card{
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     width: 100%;
     margin-bottom: 25px;
 
@@ -254,59 +270,83 @@ header{
       font-size: 29px;
     }
 
-    p{
-      text-align: center;
-      width: 80%;
-      margin: auto auto 55px;
-    }
+
   }
+}
+
+.review-card--header{
+  display: flex;
+  flex-direction: row;
+  align-content: flex-start;
+  justify-content: space-between;
+  padding-bottom: 25px;
+  border-bottom: 1px solid #666;
+}
+
+.review-card--content{
+  padding-top: 30px;
+  color: #000;
+}
+
+.review-card--header__qoute--icon{
+  width: 55px;
 }
 
 .why-card--container{
+  width:62%;
+
   p{
-    color:$review;
+    color:#b5b5b5;
+    width: 80%;
   }
 }
 
-.why-card,
-.review-card{
+.why-card{
   margin-top: 25px;
+  width:47%;
   box-shadow: 0 0 10px #b5b5b5;
-  position: relative;
-  border-bottom-left-radius: 30px;
+  border-top: 5px solid $detail;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
 
-  img{
-    width: 150px;
-    border-radius: 50%;
-    margin: 30px auto;
+  p,
+  h3{
+    text-align: center;
   }
-}
 
-.orange-box{
-  width: 40px;
-  height: 40px;
-  background: $detail;
-  border-bottom-left-radius: 15px;
-  position: absolute;
-  top: -20px;
-  left: 25px;
+  h3{
+    margin-top: 20px;
+    width: 70%;
+  }
+
+  p{
+    margin: 50px 0;
+  }
 }
 
 .reviews{
   background: $review;
   padding: 50px 0 1px;
+  margin-top: 50px;
 
   h3{
     color: #fff;
   }
 }
 
-.review-card{
-  background:#fff;
+.review-card--header__head{
+  width: 65px;
+  border-radius: 50%;
 }
 
+
 .review-name{
-  color: $detail!important;
+  color: #000;
+  font-weight: bold;
+  margin-right: auto;
+  margin-left: 15px;
 }
 
 .contact-content{
@@ -385,7 +425,7 @@ header{
 .contact-form--submit{
   padding: 17px 45px;
   background: $detail;
-  border-bottom-left-radius: 15px;
+  margin-top:30px;
   color: #fff;
   text-decoration: none;
   font-weight: bold;
@@ -401,7 +441,13 @@ header{
 footer{
   margin-top: 75px;
   background: $review;
-  height:100px;
+  padding: 50px 0;
+}
+
+.footer{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .faq{
@@ -410,6 +456,12 @@ footer{
 
 .faq-accordion{
   margin-top: 25px;
+
+  li{
+    background: #f1f1f1;
+    border-bottom-left-radius: 30px;
+    padding: 10px 0 10px 50px;
+  }
 }
 
 .hidden{
@@ -456,7 +508,7 @@ footer{
 
 .thank-you--footer{
   margin-top: 75px;
-  background: $review;
+  background: #0a2233;
   height:100px;
 
   position: absolute;
@@ -469,5 +521,131 @@ footer{
 
   p{
     margin: 20px 0!important;
+  }
+}
+
+.contact-form--home{
+  width: 350px;
+  padding: 25px;
+  position: sticky;
+  top: 80px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 15px #cbcbcb;
+  margin-left: auto;
+
+  .contact-name{
+    margin-bottom: 0;
+  }
+
+  select,
+  input{
+    padding: 15px 10px;
+  }
+
+  select,
+  input:not(.contact-name input):not(.rights-input){
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+  }
+
+  .rights-container{
+    text-align: center;
+    font-size: 14px;
+    color: #b5b5b5;
+  }
+}
+
+.contact-name input:first-of-type{
+  margin-right: 15px;
+}
+
+.sticky-container{
+  z-index: 5;
+  position: absolute;
+  top: 75px;
+  right: calc(50% - (#{$tablet-width} / 2));
+  bottom: 0;
+
+  @include laptop{
+    right: calc(50% - (#{$laptop-width} / 2));
+  }
+
+  @include desktop{
+    right: calc(50% - (#{$desktop-width} / 2));
+  }
+}
+
+.top-container{
+  position: relative;
+}
+
+.mission--banner-left{
+  margin: 40px 0;
+  color: #b5b5b5;
+  font-size: 16px;
+  width: 60%;
+
+  p{
+    margin: 30px 0;
+  }
+}
+
+.mission--banner-title--big{
+  font-size: 45px;
+  line-height: 54px;
+  font-family: 'EB Garamond', serif;
+  color: $detail;
+
+
+  @include tablet{
+    font-size: 60px;
+    line-height: 70px;
+  }
+}
+
+.underline-header{
+  display: flex;
+  flex-direction: column;
+}
+
+.header-underline{
+  width:200px;
+  height: 10px;
+  background: $detail;
+  border-bottom-left-radius: 15px;
+}
+
+.mission--images-container{
+  display: flex;
+  align-items: flex-end;
+  margin-top:100px;
+
+  img{
+    margin-right: 10px;
+
+    &:nth-child(2){
+      position: relative;
+      top: -20px;
+    }
+
+    &:last-of-type{
+      margin-right: 0;
+      position: relative;
+      top:10px;
+      left:-20px;
+    }
+  }
+}
+
+.footer--links{
+  a{
+    margin-right: 25px;
+    color: #000;
+
+    &:last-of-type{
+      margin-right: 0;
+    }
   }
 }

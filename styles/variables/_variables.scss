@@ -5,8 +5,8 @@
 @import url('https://fonts.googleapis.com/css2?family=EB+Garamond:wght@700&family=Open+Sans:wght@400;700;800&display=swap');
 
 //colors
-$review: #79868f;
-$detail: #ff6e00;
+$review: #8fb7d3;
+$detail: #51b5ea;
 $header: #0a2233;
 
 .container{
@@ -15,7 +15,6 @@ $header: #0a2233;
 
 a{
   text-decoration: none;
-  color: $review;
 
   &:hover{
     color: black;
