@@ -1,4 +1,6 @@
 <?php
+$activePage = basename($_SERVER['PHP_SELF'], ".php");
+
 use PHPMailer\PHPMailer\PHPMailer;
 require 'vendor/autoload.php';
 
@@ -147,18 +149,114 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
 
 <div class="hidden" id="captchaToken"></div>
 <header>
-    <div class="container header">
-        <div class="header-logo">
-            <h3><a href="./index.php">RentSecured</a></h3>
-        </div>
-        <div class="header-nav">
-            <a href="./mission.php">Our Mission</a>
-            <a href="./letting-agencies.php">Working with Letting Agencies</a>
-            <a class="contact" href="./contact.php">Contact</a>
-        </div>
-        <div class="header-time">
-            <p class="opening-hours">Monday - Friday : 9:00 am - 5:30 pm</p>
-            <p class="whatsapp"><img src="./img/whatsapp.svg" alt="whatsapp">+44 (0) 776 9296 437</p>
+
+    <div class="container">
+        <div class="nav">
+            <div class="header-logo">
+                <h3><a href="./index.php">RentSecured</a></h3>
+            </div>
+
+            <ul class="nav-menu">
+                <li class="<?= ($activePage == 'index') ? 'active':''; ?>"><a href="./mission.php">Our Mission</a></li>
+                <li class="<?= ($activePage == 'letting-agencies') ? 'active':''; ?>"><a href="./letting-agencies.php">Working with Letting Agencies</a></li>
+                <li class="<?= ($activePage == 'contact') ? 'active':''; ?>"><a class="contact" href="./contact.php">Contact</a></li>
+            </ul>
+
+            <div class="header-time">
+                <p class="opening-hours">Monday - Friday : 9:00 am - 5:30 pm</p>
+                <p class="whatsapp"><img src="./img/whatsapp.svg" alt="whatsapp">+44 (0) 776 9296 437</p>
+            </div>
+
+<!--            script on the bottom of the page-->
+            <label class="hamburger">
+                <input class="hamburger-input" type="checkbox" />
+                <svg id="icon" width="192px" height="192px" viewBox="0 16 32 32">
+                    <g class="icon">
+                        <g class="debug">
+                            <path class="top" d="
+          M 96, 0
+          L 72,24
+          C 68,28 60,32 56,32
+          L 40,32
+          C 36,32 28,24 24,24
+          L  0,24
+        "></path>
+                            <path class="middle" d="
+          M 56,32
+          L  0,32
+        "></path>
+                            <path class="bottom" d="
+          M 96,64
+          L 72,40
+          C 68,36 60,32 56,32
+          L 40,32
+          C 36,32 28,40 24,40
+          L  0,40
+        "></path>
+                        </g>
+                        <path class="top" d="
+        M 96, 0
+        L 72,24
+        C 68,28 60,32 56,32
+        L 40,32
+        C 36,32 28,24 24,24
+        L  0,24
+      "></path>
+                        <path class="middle" d="
+        M 56,32
+        L  0,32
+      "></path>
+                        <path class="bottom" d="
+        M 96,64
+        L 72,40
+        C 68,36 60,32 56,32
+        L 40,32
+        C 36,32 28,40 24,40
+        L  0,40
+      "></path>
+                    </g>
+                    <defs>
+                        <filter id="gooey">
+                            <feGaussianBlur
+                                    in="SourceGraphic"
+                                    result="blur"
+                                    stdDeviation="3"
+                            />
+                            <feColorMatrix
+                                    in="blur"
+                                    mode="matrix"
+                                    values="
+            1 0 0 0 0
+            0 1 0 0 0
+            0 0 1 0 0
+            0 0 0 18 -7
+          "
+                                    result="gooey"
+                            />
+                            <feBlend
+                                    in2="gooey"
+                                    in="SourceGraphic"
+                                    result="mix"
+                            />
+                        </filter>
+                    </defs>
+                </svg>
+            </label>
+
         </div>
     </div>
+
+    <ul class="nav-menu-mobile" id="menuMobile">
+        <li><a href="/">home</a></li>
+        <li><a href="./mission.php">Our Mission</a></li>
+        <li><a href="./letting-agencies.php">Working with Letting Agencies</a></li>
+        <li><a class="contact" href="./contact.php">Contact</a></li>
+    </ul>
 </header>
+
+<script>
+
+    document.getElementById('icon').addEventListener('click', function () {
+        document.getElementById('menuMobile').classList.toggle('nav-open');
+    })
+</script>
