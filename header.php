@@ -157,7 +157,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
             </div>
 
             <ul class="nav-menu">
-                <li class="<?= ($activePage == 'index') ? 'active':''; ?>"><a href="./mission.php">Our Mission</a></li>
+                <li class="<?= ($activePage == 'mission') ? 'active':''; ?>"><a href="./mission.php">Our Mission</a></li>
                 <li class="<?= ($activePage == 'letting-agencies') ? 'active':''; ?>"><a href="./letting-agencies.php">Working with Letting Agencies</a></li>
                 <li class="<?= ($activePage == 'contact') ? 'active':''; ?>"><a class="contact" href="./contact.php">Contact</a></li>
             </ul>
@@ -247,6 +247,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
     </div>
 
     <ul class="nav-menu-mobile" id="menuMobile">
+        <div class="header-time--mobile">
+            <p class="opening-hours">Monday - Friday : 9:00 am - 5:30 pm</p>
+            <p class="whatsapp"><img src="./img/whatsapp.svg" alt="whatsapp">+44 (0) 776 9296 437</p>
+        </div>
         <li><a href="/">home</a></li>
         <li><a href="./mission.php">Our Mission</a></li>
         <li><a href="./letting-agencies.php">Working with Letting Agencies</a></li>

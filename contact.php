@@ -1,8 +1,11 @@
 <?php include 'header.php';?>
 
-<section class="contact" id="contact">
+<section class="contact-section" id="contact">
     <div class="container">
-        <h3 class="section-header">—Contact Us Today!</h3>
+        <div class="underline-header">
+            <h3 class="mission--banner-title--big">Contact Us Today!</h3>
+            <span class="header-underline"></span>
+        </div>
         <div class="contact-content">
 
             <p>Send us a message</p>

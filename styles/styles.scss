@@ -72,6 +72,14 @@ header{
   color: $detail!important;
 }
 
+.contact-section{
+  margin-top:50px;
+
+  @include tablet{
+    margin-top:90px;
+  }
+}
+
 .header-nav{
   display: flex;
   align-items: center;
@@ -112,6 +120,18 @@ header{
   }
 }
 
+.header-time--mobile{
+  display: block;
+
+  @include tablet{
+    display: none;
+  }
+
+  .opening-hours{
+    text-align: center;
+  }
+}
+
 .whatsapp{
   display:flex;
   flex-direction: row;
@@ -138,7 +158,7 @@ header{
 
 .banner{
   position: relative;
-  padding: 0 0 20px 0;
+  padding: 50px 0;
   overflow: hidden;
 
   @include tablet{
@@ -179,14 +199,14 @@ header{
   text-align: center;
 
   @include tablet{
-    max-width: 50%;
+    max-width: 60%;
     text-align: left;
   }
 
   p{
-    margin: 40px 0;
     color: #fff;
-    font-size: 16px;
+    font-size: 18px;
+    font-weight: bold;
   }
 
   a{
@@ -200,9 +220,26 @@ header{
 }
 
 .banner-title--small{
-  margin-bottom: 20px;
-  font-size: 36px;
+  margin-bottom: 10px;
   color: #fff;
+  position: relative;
+
+  &:before{
+    top: -30px;
+    left: calc(50% - 12.5px);
+    content: '';
+    width:25px;
+    height:25px;
+    display: inline-block;
+    background: url("../img/excl.svg");
+    position: absolute;
+    background-size: cover;
+
+    @include tablet{
+      left: -45px;
+      top:0;
+    }
+  }
 }
 
 .banner-title--big{
@@ -210,6 +247,7 @@ header{
   line-height: 54px;
   font-family: 'Open Sans', sans-serif;
   color: #fff;
+  font-weight: bold;
 
   @include tablet{
     font-size: 60px;
@@ -219,14 +257,19 @@ header{
 
 .banner-bcg--img{
   top: 0;
-  left: -50%;
   z-index: -2;
   position: absolute;
-  height: 100%;
+  width: 100%;
   max-width: unset;
+  height: 100%;
 
   @include tablet{
-    top: -200px;
+    left:0;
+    width: unset
+  }
+
+  @include laptop{
+    top: 0;
     width: 100%;
     height: auto;
     max-width: 100%;
@@ -234,8 +277,7 @@ header{
   }
 
   @include desktop{
-    //max-width: 1200px;
-    //left: calc(50% - 600px);
+    top: -200px;
   }
 }
 
@@ -248,11 +290,21 @@ header{
   width: 100%;
 }
 
+.why-card--container__pre{
+  color: #000!important;
+  margin-bottom: 25px;
+  text-align: center;
+
+  @include tablet{
+    text-align: left;
+  }
+}
+
 .why-card--container,
 .reviews-card--container{
   display: flex;
   justify-content: space-between;
-  margin: 25px 0 70px 0;
+  margin: 70px 0 70px 0;
   flex-direction: column;
   flex-wrap: wrap;
 
@@ -299,6 +351,7 @@ header{
 
 .review-card--header__qoute--icon{
   width: 55px;
+  height: 55px;
 }
 
 .why-card--container{
@@ -308,7 +361,7 @@ header{
     width:62%;
   }
 
-  p{
+  p:not(.why-card--container__pre){
     color:#b5b5b5;
     width: 80%;
   }
@@ -325,8 +378,18 @@ header{
   justify-content: flex-start;
 
   @include tablet{
+    width: 65%;
+  }
+
+  @include laptop{
+    width: 85%;
+  }
+
+  @include desktop{
     width:47%;
   }
+
+
 
   p,
   h3{
@@ -355,6 +418,7 @@ header{
 
 .review-card--header__head{
   width: 65px;
+  height: 65px;
   border-radius: 50%;
 }
 
@@ -392,7 +456,6 @@ header{
     height: 45px;
     padding: 0 15px;
     box-sizing: border-box;
-    color: $review;
     margin-bottom: 20px;
 
     @include tablet{
@@ -409,7 +472,6 @@ header{
 
   p{
     font-size: 14px;
-    color: $review;
     margin-bottom: 25px;
   }
 }
@@ -423,11 +485,11 @@ header{
 .contact-property{
   display: flex;
   justify-content: space-between;
-  margin-bottom: 15px;
   flex-direction: column;
 
   @include tablet{
     flex-direction: row;
+    margin-bottom: 15px;
   }
 }
 
@@ -509,10 +571,6 @@ footer{
     font-size: 47px;
     line-height: unset;
   }
-}
-
-.why-us{
-  margin-top: 50px;
 }
 
 .thank-you--message{
@@ -613,10 +671,14 @@ footer{
 }
 
 .mission--banner-left{
-  margin: 40px 0;
   color: #b5b5b5;
   font-size: 16px;
-  width: 60%;
+  width: 100%;
+
+  @include tablet{
+    width: 60%;
+    margin: 40px 0;
+  }
 
   p{
     margin: 30px 0;
@@ -624,7 +686,7 @@ footer{
 }
 
 .mission--banner-title--big{
-  font-size: 44px;
+  font-size: 32px;
   line-height: 54px;
   font-family: 'Open Sans', sans-serif;
   color: $detail;
@@ -643,29 +705,60 @@ footer{
 
 .header-underline{
   width:200px;
-  height: 10px;
+  height: 7px;
   background: $detail;
   border-bottom-left-radius: 15px;
 }
 
 .mission--images-container{
   display: flex;
-  align-items: flex-end;
-  margin-top:100px;
+  flex-direction: column;
+  align-items: center;
+
+  @include tablet{
+    margin-top:100px;
+    align-items: flex-end;
+    flex-direction: row;
+  }
 
   img{
-    margin-right: 10px;
+    position: relative;
+
+    @include tablet{
+      margin-right: 10px;
+    }
+
+    &:nth-child(1){
+      top: 20px;
+      right: -20px;
+
+      @include tablet{
+        top: 0;
+        right: 0;
+      }
+    }
 
     &:nth-child(2){
-      position: relative;
-      top: -20px;
+      left: -20px;
+      z-index: 2;
+
+      @include tablet{
+        top: 0;
+        left: 0;
+        height: 250px;
+
+      }
     }
 
     &:last-of-type{
-      margin-right: 0;
-      position: relative;
-      top:10px;
-      left:-20px;
+      top: -20px;
+      right: -15px;
+
+      @include tablet{
+        margin-right: 0;
+        top:10px;
+        left:-20px;
+      }
     }
   }
 }
@@ -838,12 +931,83 @@ path {
 }
 
 .nav-open{
-  height:240px;
+  height:279px;
   margin-bottom: 15px;
 }
 
 ////////////////////
 
 .active{
-  border-bottom: 2px solid #ee5c1b;
+  //border-bottom: 2px solid $detail;
+}
+
+.contact-mobile--container{
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  bottom:0;
+  background:#fff;
+  z-index: 5;
+  width:100%;
+  transform: translate(0, calc(100% - 79px));
+  padding: 15px;
+  box-sizing: border-box;
+  transition: all .3s ease-in;
+  overflow: scroll;
+
+  @include tablet{
+    display: none;
+  }
+}
+
+.contact-mobile--button{
+  background: $detail;
+  color: #fff;
+  border: none;
+  padding: 15px 35px;
+  font-size: 14px;
+  font-weight: bold;
+  width:100%;
+}
+
+.contact-open{
+  transform: translate(0, 0) !important;
+  top: 0;
+  bottom: auto;
+  height: 100%;
+}
+
+.covid-update{
+  padding: 50px 20px 20px 20px;
+  margin-top: 50px;
+  background: #ffffff8c;
+
+  @include tablet{
+    padding: 20px 15px 20px 70px;
+
+  }
+}
+
+.grey-bar{
+  width:100%;
+  background:#f7f7f7;
+  padding: 25px 0;
+
+  h3{
+    margin: 0 auto;
+    padding: 0 25px;
+    position: relative;
+    @include tablet {
+      width: $tablet-width;
+      padding: 0 15px;
+    }
+    @include laptop {
+      width: $laptop-width;
+    }
+    @include desktop {
+      width: $desktop-width;
+    }
+  }
 }
