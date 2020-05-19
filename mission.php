@@ -66,42 +66,7 @@
 
 </div>
 
-<section id="reviews" class="reviews">
-    <div class="container">
-        <h3 class="section-header">— Our Client Reviews</h3>
-        <div class="reviews-card--container">
-            <div class="review-card">
-                <div class="review-card--header">
-                    <img class="review-card--header__head" src="./img/review1.jpg" alt="">
-                    <p class="review-name">Anthony, London</p>
-                    <img src="./img/format.svg" alt="" class="review-card--header__qoute--icon">
-                </div>
-                <p class="review-card--content">RentSecured have helped me a lot! They take care of everything and pay me a fixed long term rent every month without fail. I am delighted that I have saved time and money by working with them!</p>
-
-            </div>
-
-            <div class="review-card">
-                <div class="review-card--header">
-                    <img class="review-card--header__head" src="./img/review2.jpg" alt="">
-                    <p class="review-name">Azad, London</p>
-                    <img src="./img/format.svg" alt="" class="review-card--header__qoute--icon">
-                </div>
-                <p class="review-card--content">Since the Covid outbreak, I have had real challenges keeping all of my properties filled 100% of the time. Since working with RentSecured, I have found a way of avoiding rent loss !</p>
-
-            </div>
-
-            <div class="review-card">
-                <div class="review-card--header">
-                    <img class="review-card--header__head" src="./img/review3.jpg" alt="">
-                    <p class="review-name">Matt, London</p>
-                    <img src="./img/format.svg" alt="" class="review-card--header__qoute--icon">
-                </div>
-                <p class="review-card--content">RentSecured saved me from repossession! They payed me a fixed long term rent every month that really helped me get my finances back!</p>
-            </div>
-        </div>
-    </div>
-</section>
-
+<?php include 'reviews.php' ?>
 <?php include 'faq.php' ?>
 
 <footer>
